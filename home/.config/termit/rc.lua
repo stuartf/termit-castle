@@ -23,6 +23,16 @@ setOptions(defaults)
 -- Unbind ctrl-t so it doesn't create tabs
 bindKey('Ctrl-t', nil)
 
+function changeTabFontSize(delta)
+    tab = tabs[currentTabIndex()]
+    setTabFont(string.sub(tab.font, 1, string.find(tab.font, '[0-9.]+$') - 1)..(tab.fontSize + delta))
+end
+
+bindKey('CtrlShift-equal', function () changeTabFontSize(1) end)
+bindKey('Ctrl-equal', function () changeTabFontSize(1) end)
+bindKey('Ctrl-minus', function () changeTabFontSize(-1) end)
+bindKey('Ctrl-0', function () setTabFont(defaults.font) end)
+
 setKbPolicy('keysym')
 
 posix.setenv('TERM', 'xterm-256color')
