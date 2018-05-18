@@ -1,5 +1,3 @@
-assert(package.loadlib('/usr/lib/x86_64-linux-gnu/liblua5.2-posix.so.1', 'luaopen_posix_c'))()
-
 defaults = {}
 defaults.windowTitle = 'Termit'
 defaults.tabName = 'Terminal'
@@ -34,5 +32,3 @@ bindKey('Ctrl-minus', function () changeTabFontSize(-1) end)
 bindKey('Ctrl-0', function () setTabFont(defaults.font) end)
 
 setKbPolicy('keysym')
-
-posix.setenv('TERM', 'xterm-256color')
